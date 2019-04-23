@@ -1,0 +1,50 @@
+{% extends "reviews/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<h2 class="mb-4">{{ user.profile }}</h2>
+
+<div class="card">
+	<div class="card-body profile">
+		<div class="row">
+			<div class="col-md-4">
+				<img class="rounded-circle account-img w-75 mx-auto d-block" src="{{ user.profile.image.url }}">
+			</div>
+			<div class="col profile-info">
+				<p class="text-secondary mb-0">{{ user.username }}</p>
+				<p class="text-secondary">{{ user.email }}</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="card mt-2">
+	<div class="card-body">
+		<form method="POST" enctype="multipart/form-data">
+			{% csrf_token %}
+			<fieldset class="form-group">
+				<legend class="border-bottom mb-4">User Details Edit</legend>
+				{{ u_form | crispy }}
+			</fieldset>
+			<div class="form-group">
+				<button class="btn btn-primary" type="submit">Update</button>
+			</div>
+		</form>
+	</div>
+</div>
+
+<div class="card mt-2">
+	<div class="card-body">
+		<form method="POST" enctype="multipart/form-data">
+			{% csrf_token %}
+			<fieldset class="form-group">
+				<legend class="border-bottom mb-4">Profile Details Edit</legend>
+				{{ p_form | crispy }}
+			</fieldset>
+			<div class="form-group">
+				<button class="btn btn-primary" type="submit">Update</button>
+			</div>
+		</form>
+	</div>
+</div>
+
+{% endblock content %}
