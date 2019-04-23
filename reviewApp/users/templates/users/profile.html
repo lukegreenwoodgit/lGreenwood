@@ -10,8 +10,41 @@
 				<img class="rounded-circle account-img w-75 mx-auto d-block" src="{{ user.profile.image.url }}">
 			</div>
 			<div class="col profile-info">
-				<p class="text-secondary mb-0">{{ user.username }}</p>
-				<p class="text-secondary">{{ user.email }}</p>
+				<div class="basic-profile-info">
+					<h4>Basic Info</h4>
+					<div class="row">
+						<p class="col-md-3 mb-0 text-muted">Username</p>
+						<p class="col text-secondary mb-0">{{ user.username }}</p>
+					</div>
+					<div class="row">
+						<p class="col-md-3 text-muted">Email</p>
+						<p class="col text-secondary">{{ user.email }}</p>
+					</div>
+				</div>
+
+				<div class="personal-profile-info">
+					<h4>Personal Information</h4>
+					<div class="row">
+						<p class="col-md-3 text-muted">Full Name</p>
+						<p class="col">{{ user.profile.full_name }}</p>
+					</div>
+					<div class="row">
+						<p class="col-md-3 text-muted">Date of Birth</p>
+						<p class="col">{{ user.profile.date_of_birth }}</p>
+					</div>
+					<div class="row">
+						<p class="col-md-3 text-muted">Address</p>
+						<p class="col">{{ user.profile.address }}</p>
+					</div>
+					<div class="row">
+						<p class="col-md-3 text-muted">City</p>
+						<p class="col">{{ user.profile.city }}</p>
+					</div>
+					<div class="row">
+						<p class="col-md-3 text-muted">Country</p>
+						<p class="col">{{ user.profile.country }}</p>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -22,7 +55,7 @@
 		<form method="POST" enctype="multipart/form-data">
 			{% csrf_token %}
 			<fieldset class="form-group">
-				<legend class="border-bottom mb-4">User Details Edit</legend>
+				<legend class="border-bottom mb-4">Edit User Details</legend>
 				{{ u_form | crispy }}
 			</fieldset>
 			<div class="form-group">
@@ -37,7 +70,7 @@
 		<form method="POST" enctype="multipart/form-data">
 			{% csrf_token %}
 			<fieldset class="form-group">
-				<legend class="border-bottom mb-4">Profile Details Edit</legend>
+				<legend class="border-bottom mb-4">Edit Profile Details</legend>
 				{{ p_form | crispy }}
 			</fieldset>
 			<div class="form-group">
