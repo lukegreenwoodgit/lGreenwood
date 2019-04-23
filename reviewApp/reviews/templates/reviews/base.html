@@ -7,6 +7,7 @@
 
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 		<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+		<link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,700" rel="stylesheet">
 
 		{% if title %}
 		<title>Review App - {{ title }}</title>
@@ -37,7 +38,10 @@
 
 					<ul class="navbar-nav">
 						{% if user.is_authenticated %}
-						<span class="navbar-text">Welcome {{ user.username }}, </span>
+						<span class="navbar-text">Welcome {{ user.username }}</span>
+						<li class="nav-item">
+							<a class="nav-link" href="{% url 'profile' %}">Profile</a>
+						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="{% url 'logout' %}">Logout</a>
 						</li>
