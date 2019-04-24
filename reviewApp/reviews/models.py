@@ -1,6 +1,8 @@
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
+from django.urls import reverse
+
 
 # Create your models here.
 
@@ -32,3 +34,6 @@ class Review(models.Model):
 
 	def __str__(self):
 		return f'Review of {self.product.name} by {self.author.profile}'
+
+	def get_absolute_url(self):
+		return reverse('review-detail', kwargs = {'pk': self.pk})

@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Product, Review
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, CreateView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Create your views here.
 
@@ -25,14 +26,14 @@ class ProductDetailView(DetailView):
 class ReviewDetailView(DetailView):
 	model = Review
 
-	# def get_context_data(self, **kwargs):
-	# 	context = super().get_context_data(**kwargs)
-	# 	context['reviews'] = Review.objects.filter(product_id = self.kwargs['pk'])
+class ReviewCreateView(LoginRequiredMixin, CreateView):
+	model = Review
+	fields = ['product', 'rating', 'review_text', 'date']
+	#inital = {'product':}
+	
+	def form_valid(self, form):
+		form.instance.author = self.request.user
+		return super().form_valid(form)
 
-# def products(request):
-
-# 	products_list = {
-# 		'products': Product.objects.all()
-# 	}
-
-# 	return render(request, 'reviews/products.html', products_list)
+	def get_inital(self):
+		return {'product': self.kwargs['pk']}
