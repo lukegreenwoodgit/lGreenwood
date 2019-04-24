@@ -14,6 +14,10 @@ body {
 	z-index: 2;
 }
 
+.review-card {
+	position: relative;
+}
+
 .product-card:hover .product-name, .review-card:hover .review-name {
 	text-decoration: underline;
 }
