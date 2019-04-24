@@ -1,0 +1,17 @@
+{% extends "reviews/base.html" %}
+{% block content %}
+<h1>Review</h1>
+<div class="card mb-1">
+	<div class="card-body">
+		<div class="row">
+			<div class="col-md-3"><img src="{{ review.author.profile.image.url }}" class="rounded-circle img-fluid"></div>
+			<div class="col-md-8">
+				<h3 class="mb-0 review-name">Review by {{ review.author.profile.full_name }}</h3>
+				<p class="text-dark">{{ review.rating }}/5</p>
+				<p>{{ review.review_text }}</p>
+			</div>
+		</div>
+	</div>
+</div>
+<a href="{% url 'product-detail' review.product.pk %}" class="mt-2 btn btn-outline-primary">Back to Product</a>
+{% endblock content %}

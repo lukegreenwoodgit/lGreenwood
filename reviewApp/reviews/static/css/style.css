@@ -6,7 +6,7 @@ body {
 	margin-bottom: 0;
 }
 
-.product-card a.detail-link {
+.product-card a.detail-link, .review-card a.detail-link {
 	display: block;
 	position: absolute;
 	width: 100%;
@@ -14,6 +14,6 @@ body {
 	z-index: 2;
 }
 
-.product-card:hover .product-name {
-	text-decoration: underline;;
+.product-card:hover .product-name, .review-card:hover .review-name {
+	text-decoration: underline;
 }

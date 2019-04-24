@@ -24,12 +24,13 @@
 </div>
 {% if object.review_set.all %}
 {% for review in object.review_set.all %}
-<div class="card mb-1">
+<div class="card mb-1 review-card">
 	<div class="card-body">
+		<a class="detail-link" href="{% url 'review-detail' review.id %}"></a>
 		<div class="row">
 			<div class="col-md-2"><img src="{{ review.author.profile.image.url }}" class="rounded-circle img-fluid"></div>
 			<div class="col-md-9">
-				<h5 class="mb-0">Review by {{ review.author.profile.full_name }}</h5>
+				<h5 class="mb-0 review-name">Review by {{ review.author.profile.full_name }}</h5>
 				<p class="text-dark">{{ review.rating }}/5</p>
 				<p>{{ review.review_text }}</p>
 			</div>
