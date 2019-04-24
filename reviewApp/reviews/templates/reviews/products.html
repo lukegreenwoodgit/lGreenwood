@@ -1,4 +1,21 @@
 {% extends "reviews/base.html" %}
 {% block content %}
 <h1>Products</h1>
+
+{% for product in object_list %}
+<div class="card mb-3 product-card">
+	<a class="detail-link" href="{% url 'product-detail' product.id %}"></a>
+	<div class="card-body">
+		<div class="row">
+			<div class="col-md-3"><img src="{{ product.photo.url }}" class="img-fluid"></div>
+			<div class="col-md-9">
+				<h2 class="product-name mb-0">{{ product.name }}</h2>
+				<h5 class="text-muted">{{ product.brand }}</h5>
+				<p>{{ product.description }}</p>
+			</div>
+		</div>
+	</div>
+</div>
+{% endfor %}
+
 {% endblock content %}

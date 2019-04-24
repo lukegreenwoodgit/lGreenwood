@@ -31,4 +31,4 @@ class Review(models.Model):
 	date = models.DateField(default = timezone.now)
 
 	def __str__(self):
-		return f'Review of {self.product.name} by {self.author.profile.full_name}'
+		return f'Review of {self.product.name} by {self.author.profile}'
